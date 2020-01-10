@@ -20,7 +20,6 @@ public class Container {
 
   private <T> void registerByType(Class type) {
     try {
-      Constructor[] constructors = type.getConstructors();
       final Object instance;
       {
         Constructor constructor = findConstructorWithLongestParamList(type);
