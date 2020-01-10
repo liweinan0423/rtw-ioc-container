@@ -37,8 +37,8 @@ public class Container {
     }
   }
 
-  private <T> boolean registerInstance(T instance) {
-    return beans.add(instance);
+  private <T> void registerInstance(T instance) {
+    beans.add(instance);
   }
 
   private <T> boolean isAnInstance(T instanceOrType) {
