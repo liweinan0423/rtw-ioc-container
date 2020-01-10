@@ -1,6 +1,6 @@
 import fixtures.CompositeTypeWithSingleCtor;
 import fixtures.CompositeTypeWithMultipleCtors;
-import fixtures.Klass;
+import fixtures.TypeWithoutCtor;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -34,8 +34,8 @@ public class ContainerTest {
   @Test
   public void should_be_able_to_register_a_bean_by_type() {
     Container container = new Container();
-    container.register(Klass.class);
-    assertThat(container.get(Klass.class), isA(Klass.class));
+    container.register(TypeWithoutCtor.class);
+    assertThat(container.get(TypeWithoutCtor.class), isA(TypeWithoutCtor.class));
   }
 
   @Test
