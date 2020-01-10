@@ -2,7 +2,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Parameter;
 import java.util.*;
 
-@SuppressWarnings("raw")
+@SuppressWarnings("rawtypes")
 public class Container {
 
   private Set<Object> beans = new HashSet<>();
