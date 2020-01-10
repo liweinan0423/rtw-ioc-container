@@ -20,7 +20,6 @@ public class Container {
 
   private <T> void registerByType(Class type) {
     try {
-      final Object instance;
       Constructor constructor = findConstructorWithLongestParamList(type);
       Parameter[] parameters = constructor.getParameters();
       Object[] paramValues = new Object[parameters.length];
@@ -31,8 +30,7 @@ public class Container {
         paramValues[i] = paramValue;
       }
 
-      instance = constructor.newInstance(paramValues);
-      registerInstance(instance);
+      registerInstance(constructor.newInstance(paramValues));
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
