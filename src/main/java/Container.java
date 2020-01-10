@@ -48,7 +48,7 @@ public class Container {
   private Constructor findConstructorWithLongestParamList(Class type) {
     return Arrays.stream(type.getConstructors()).max(Comparator.comparingInt(Constructor::getParameterCount)).orElseThrow(RuntimeException::new);
   }
-  
+
   public <T> T get(Class<T> type) {
     return (T) beanRegistry.get(type);
   }
