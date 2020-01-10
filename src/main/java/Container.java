@@ -21,19 +21,17 @@ public class Container {
   private <T> void registerByType(Class type) {
     try {
       final Object instance;
-      {
-        Constructor constructor = findConstructorWithLongestParamList(type);
-        Parameter[] parameters = constructor.getParameters();
-        Object[] paramValues = new Object[parameters.length];
-        for (int i = 0, parametersLength = parameters.length; i < parametersLength; i++) {
-          Parameter parameter = parameters[i];
-          Class<?> paramType = parameter.getType();
-          Object paramValue = this.get(paramType);
-          paramValues[i] = paramValue;
-        }
-
-        instance = constructor.newInstance(paramValues);
+      Constructor constructor = findConstructorWithLongestParamList(type);
+      Parameter[] parameters = constructor.getParameters();
+      Object[] paramValues = new Object[parameters.length];
+      for (int i = 0, parametersLength = parameters.length; i < parametersLength; i++) {
+        Parameter parameter = parameters[i];
+        Class<?> paramType = parameter.getType();
+        Object paramValue = this.get(paramType);
+        paramValues[i] = paramValue;
       }
+
+      instance = constructor.newInstance(paramValues);
       registerInstance(instance);
     } catch (Exception e) {
       throw new RuntimeException(e);
