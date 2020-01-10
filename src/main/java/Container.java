@@ -19,7 +19,7 @@ public class Container {
     return instanceOrType instanceof Class;
   }
 
-  private <T> void registerByType(Class type) {
+  private void registerByType(Class type) {
     try {
       Constructor constructor = findConstructorWithLongestParamList(type);
       Parameter[] parameters = constructor.getParameters();
