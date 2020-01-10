@@ -18,9 +18,8 @@ public class Container {
     return instanceOrType instanceof Class;
   }
 
-  private <T> void registerByType(Class instanceOrType) {
+  private <T> void registerByType(Class type) {
     try {
-      Class type = instanceOrType;
       Constructor[] constructors = type.getConstructors();
       final Object instance;
       if (constructors.length == 0) {
@@ -44,8 +43,8 @@ public class Container {
     }
   }
 
-  private <T> boolean registerInstance(T instanceOrType) {
-    return beans.add(instanceOrType);
+  private <T> boolean registerInstance(T instance) {
+    return beans.add(instance);
   }
 
   private <T> boolean isAnInstance(T instanceOrType) {
