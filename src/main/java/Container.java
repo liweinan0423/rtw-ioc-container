@@ -25,6 +25,11 @@ public class Container {
     return !(instanceOrType instanceof Class);
   }
 
+  private void registerInstance(Object instance) {
+    beans.add(instance);
+    beanRegistry.put(instance.getClass(), instance);
+  }
+
   private void registerByType(Class type) {
     try {
       Constructor constructor = findConstructorWithLongestParamList(type);
@@ -43,16 +48,11 @@ public class Container {
     }
   }
 
-  private void registerInstance(Object instance) {
-    beans.add(instance);
-    beanRegistry.put(instance.getClass(), instance);
-  }
-
   private Constructor findConstructorWithLongestParamList(Class type) {
     return Arrays.stream(type.getConstructors()).max(Comparator.comparingInt(Constructor::getParameterCount)).orElseThrow(RuntimeException::new);
   }
 
   public <T> T get(Class<T> type) {
-    return (T) beans.stream().filter(bean -> bean.getClass() == type).findFirst().orElse(null);
+    return (T) beanRegistry.get(type);
   }
 }
