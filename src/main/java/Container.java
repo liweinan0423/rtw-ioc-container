@@ -26,7 +26,6 @@ public class Container {
   }
 
   private void registerInstance(Object instance) {
-    beans.add(instance);
     beanRegistry.put(instance.getClass(), instance);
   }
 
