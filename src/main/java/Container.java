@@ -22,9 +22,7 @@ public class Container {
     try {
       Constructor[] constructors = type.getConstructors();
       final Object instance;
-      if (constructors.length == 0) {
-        instance = type.newInstance();
-      } else {
+      {
         Constructor constructor = findConstructorWithLongestParamList(type);
         Parameter[] parameters = constructor.getParameters();
         Object[] paramValues = new Object[parameters.length];
