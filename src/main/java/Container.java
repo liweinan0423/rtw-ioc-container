@@ -2,7 +2,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Parameter;
 import java.util.*;
 
-@SuppressWarnings("rawtypes")
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class Container {
 
   private Map<Class, Object> beanRegistry = new HashMap<>();
@@ -48,7 +48,7 @@ public class Container {
   private Constructor findConstructorWithLongestParamList(Class type) {
     return Arrays.stream(type.getConstructors()).max(Comparator.comparingInt(Constructor::getParameterCount)).orElseThrow(RuntimeException::new);
   }
-  @SuppressWarnings("unchecked")
+  
   public <T> T get(Class<T> type) {
     return (T) beanRegistry.get(type);
   }
