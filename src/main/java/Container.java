@@ -5,8 +5,6 @@ import java.util.*;
 @SuppressWarnings("rawtypes")
 public class Container {
 
-  private Set<Object> beans = new HashSet<>();
-
   private Map<Class, Object> beanRegistry = new HashMap<>();
 
   public <T> void register(T instanceOrType) {
