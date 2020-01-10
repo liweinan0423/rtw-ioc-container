@@ -37,7 +37,7 @@ public class Container {
     }
   }
 
-  private <T> void registerInstance(T instance) {
+  private void registerInstance(Object instance) {
     beans.add(instance);
   }
 
