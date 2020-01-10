@@ -7,6 +7,8 @@ public class Container {
 
   private Set<Object> beans = new HashSet<>();
 
+  private Map<Class, Object> beanRegistry = new HashMap<>();
+
   public <T> void register(T instanceOrType) {
     if (isAnInstance(instanceOrType)) {
       registerInstance(instanceOrType);
@@ -39,6 +41,7 @@ public class Container {
 
   private void registerInstance(Object instance) {
     beans.add(instance);
+    beanRegistry.put(instance.getClass(), instance);
   }
 
   private <T> boolean isAnInstance(T instanceOrType) {
