@@ -21,6 +21,10 @@ public class Container {
     return instanceOrType instanceof Class;
   }
 
+  private <T> boolean isAnInstance(T instanceOrType) {
+    return !(instanceOrType instanceof Class);
+  }
+
   private void registerByType(Class type) {
     try {
       Constructor constructor = findConstructorWithLongestParamList(type);
@@ -42,10 +46,6 @@ public class Container {
   private void registerInstance(Object instance) {
     beans.add(instance);
     beanRegistry.put(instance.getClass(), instance);
-  }
-
-  private <T> boolean isAnInstance(T instanceOrType) {
-    return !(instanceOrType instanceof Class);
   }
 
   private Constructor findConstructorWithLongestParamList(Class type) {
